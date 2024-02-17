@@ -6,6 +6,7 @@ export const ModalA = ({ showA, openA, openB, openC, handleClose }) => {
     const [page, setPage] = useState(1);
     const [contacts, setContacts] = useState([]);
     const [search, setSearch] = useState("");
+
     let debounceTimeout;
     const fetchContacts = useCallback(async () => {
         const res = await fetch(
@@ -81,6 +82,13 @@ export const ModalA = ({ showA, openA, openB, openC, handleClose }) => {
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
+                    {/* <input
+                            type="checkbox"
+                            // className="form-control"
+                            placeholder="Search"
+                            name="search"
+                          che
+                        /> */}
                     <Button
                         style={{
                             backgroundColor: "#46139f",
