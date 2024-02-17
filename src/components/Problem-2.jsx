@@ -13,10 +13,14 @@ const Problem2 = () => {
     const closeA = () => setShowA(false);
     const openA = () => {
         setShowA(true);
+        window.history.pushState({}, "", "/problem-2?all-contacts");
     };
 
     const closeB = () => setShowB(false);
-    const openB = () => setShowB(true);
+    const openB = () => {
+        setShowB(true);
+        window.history.pushState({}, "", "/problem-2?us-contacts");
+    };
 
     const closeC = () => setShowC(false);
     const openC = (data) => {
