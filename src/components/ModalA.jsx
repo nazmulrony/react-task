@@ -5,17 +5,29 @@ import Modal from "react-bootstrap/Modal";
 export const ModalA = ({ showA, openA, openB, openC, handleClose }) => {
     const [page, setPage] = useState(1);
     const [contacts, setContacts] = useState([]);
+    const [search, setSearch] = useState("");
+    let debounceTimeout;
     const fetchContacts = useCallback(async () => {
         const res = await fetch(
-            `https://contact.mediusware.com/api/contacts/?page=${page}`
+            `https://contact.mediusware.com/api/contacts/?page=${page}&search=${search}`
         );
         const data = await res.json();
         setContacts([...data?.results]);
-    }, [page]);
+    }, [page, search]);
 
     useEffect(() => {
         fetchContacts();
-    }, [fetchContacts]);
+    }, [fetchContacts, search]);
+
+    const handlePhoneNumberChange = (event) => {
+        const newPhoneNumber = event.target.value;
+
+        clearTimeout(debounceTimeout);
+
+        debounceTimeout = setTimeout(() => {
+            setSearch(newPhoneNumber);
+        }, 1000);
+    };
 
     return (
         <div
@@ -24,7 +36,16 @@ export const ModalA = ({ showA, openA, openB, openC, handleClose }) => {
         >
             <Modal show={showA} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>All Contacts</Modal.Title>
+                    <div className="">
+                        <Modal.Title>All Contacts</Modal.Title>
+                        <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Search"
+                            name="search"
+                            onChange={handlePhoneNumberChange}
+                        />
+                    </div>
                 </Modal.Header>
                 <Modal.Body style={{ height: "450px", overflowY: "scroll" }}>
                     <div className="d-grid gap-3">
