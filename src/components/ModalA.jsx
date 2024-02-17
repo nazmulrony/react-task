@@ -1,11 +1,13 @@
 import { useCallback, useEffect, useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import Modal from "react-bootstrap/Modal";
 
 export const ModalA = ({ showA, openA, openB, openC, handleClose }) => {
     const [page, setPage] = useState(1);
     const [contacts, setContacts] = useState([]);
     const [search, setSearch] = useState("");
+
+    const [check, setCheck] = useState(false);
 
     let debounceTimeout;
     const fetchContacts = useCallback(async () => {
@@ -19,6 +21,16 @@ export const ModalA = ({ showA, openA, openB, openC, handleClose }) => {
     useEffect(() => {
         fetchContacts();
     }, [fetchContacts, search]);
+
+    useEffect(() => {
+        if (check) {
+            setContacts((prevContacts) =>
+                prevContacts.filter((contact) => contact.id % 2 === 0)
+            );
+        } else {
+            fetchContacts();
+        }
+    }, [check]);
 
     const handlePhoneNumberChange = (event) => {
         const newPhoneNumber = event.target.value;
@@ -43,7 +55,7 @@ export const ModalA = ({ showA, openA, openB, openC, handleClose }) => {
                             type="text"
                             className="form-control"
                             placeholder="Search"
-                            name="search"
+                            name="search phone"
                             onChange={handlePhoneNumberChange}
                         />
                     </div>
@@ -82,13 +94,19 @@ export const ModalA = ({ showA, openA, openB, openC, handleClose }) => {
                     </div>
                 </Modal.Body>
                 <Modal.Footer>
-                    {/* <input
+                    <div
+                        onClick={() => setCheck((value) => !value)}
+                        style={{ cursor: "pointer" }}
+                    >
+                        <input
                             type="checkbox"
-                            // className="form-control"
                             placeholder="Search"
                             name="search"
-                          che
-                        /> */}
+                            checked={check}
+                            onChange={() => setCheck((value) => !value)}
+                        />
+                        Only even
+                    </div>
                     <Button
                         style={{
                             backgroundColor: "#46139f",
