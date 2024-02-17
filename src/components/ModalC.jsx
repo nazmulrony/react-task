@@ -14,24 +14,40 @@ export const ModalC = ({ showC, handleClose, openA, openB, data }) => {
             </Modal.Body>
             <Modal.Footer>
                 <Button
+                    style={{
+                        backgroundColor: "#46139f",
+                        borderColor: "transparent",
+                    }}
                     variant="primary"
                     onClick={() => {
                         handleClose();
                         openA();
                     }}
                 >
-                    Modal A
+                    Button A
                 </Button>
                 <Button
+                    style={{
+                        backgroundColor: "#ff7f50",
+                        borderColor: "transparent",
+                    }}
                     variant="primary"
                     onClick={() => {
                         handleClose();
                         openB();
                     }}
                 >
-                    Modal B
+                    Button B
                 </Button>
-                <Button variant="primary" onClick={handleClose}>
+                <Button
+                    style={{
+                        backgroundColor: "white",
+                        borderColor: "#46139f",
+                        color: "#46139f",
+                    }}
+                    variant="primary"
+                    onClick={handleClose}
+                >
                     Close
                 </Button>
             </Modal.Footer>

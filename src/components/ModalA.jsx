@@ -35,6 +35,7 @@ export const ModalA = ({ showA, openA, openB, openC, handleClose }) => {
                                 key={contact?.id}
                                 onClick={() => openC(contact)}
                             >
+                                <p>ID: {contact.id}</p>
                                 <p>{contact?.phone}</p>
                                 <p>{contact?.country?.name}</p>
                             </div>
@@ -60,6 +61,10 @@ export const ModalA = ({ showA, openA, openB, openC, handleClose }) => {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button
+                        style={{
+                            backgroundColor: "#46139f",
+                            borderColor: "transparent",
+                        }}
                         variant="primary"
                         onClick={() => {
                             handleClose();
@@ -69,6 +74,10 @@ export const ModalA = ({ showA, openA, openB, openC, handleClose }) => {
                         Button A
                     </Button>
                     <Button
+                        style={{
+                            backgroundColor: "#ff7f50",
+                            borderColor: "transparent",
+                        }}
                         variant="primary"
                         onClick={() => {
                             handleClose();
@@ -77,7 +86,15 @@ export const ModalA = ({ showA, openA, openB, openC, handleClose }) => {
                     >
                         Button B
                     </Button>
-                    <Button variant="primary" onClick={handleClose}>
+                    <Button
+                        style={{
+                            backgroundColor: "white",
+                            borderColor: "#46139f",
+                            color: "#46139f",
+                        }}
+                        variant="primary"
+                        onClick={handleClose}
+                    >
                         Close
                     </Button>
                 </Modal.Footer>

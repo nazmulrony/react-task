@@ -24,7 +24,7 @@ export const ModalB = ({ showB, openA, openB, openC, handleClose }) => {
         >
             <Modal show={showB} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>All Contacts</Modal.Title>
+                    <Modal.Title>US Contacts</Modal.Title>
                 </Modal.Header>
                 <Modal.Body style={{ height: "450px", overflowY: "scroll" }}>
                     <div className="d-grid gap-3">
@@ -58,8 +58,13 @@ export const ModalB = ({ showB, openA, openB, openC, handleClose }) => {
                         </Button>
                     </div>
                 </Modal.Body>
+
                 <Modal.Footer>
                     <Button
+                        style={{
+                            backgroundColor: "#46139f",
+                            borderColor: "transparent",
+                        }}
                         variant="primary"
                         onClick={() => {
                             handleClose();
@@ -69,6 +74,10 @@ export const ModalB = ({ showB, openA, openB, openC, handleClose }) => {
                         Button A
                     </Button>
                     <Button
+                        style={{
+                            backgroundColor: "#ff7f50",
+                            borderColor: "transparent",
+                        }}
                         variant="primary"
                         onClick={() => {
                             handleClose();
@@ -77,7 +86,15 @@ export const ModalB = ({ showB, openA, openB, openC, handleClose }) => {
                     >
                         Button B
                     </Button>
-                    <Button variant="primary" onClick={handleClose}>
+                    <Button
+                        style={{
+                            backgroundColor: "white",
+                            borderColor: "#46139f",
+                            color: "#46139f",
+                        }}
+                        variant="primary"
+                        onClick={handleClose}
+                    >
                         Close
                     </Button>
                 </Modal.Footer>

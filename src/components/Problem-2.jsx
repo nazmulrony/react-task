@@ -11,7 +11,9 @@ const Problem2 = () => {
     const [showC, setShowC] = useState(false);
 
     const closeA = () => setShowA(false);
-    const openA = () => setShowA(true);
+    const openA = () => {
+        setShowA(true);
+    };
 
     const closeB = () => setShowB(false);
     const openB = () => setShowB(true);
@@ -37,6 +39,7 @@ const Problem2 = () => {
                         All Contacts
                     </button>
                     <button
+                        onClick={openB}
                         className="btn btn-lg btn-outline-warning"
                         type="button"
                     >
